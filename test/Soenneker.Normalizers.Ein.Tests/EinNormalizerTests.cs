@@ -1,21 +1,20 @@
-﻿using AwesomeAssertions;
+using AwesomeAssertions;
 using Soenneker.Normalizers.Ein.Abstract;
-using Soenneker.Tests.FixturedUnit;
-using Xunit;
+using Soenneker.Tests.HostedUnit;
 
 namespace Soenneker.Normalizers.Ein.Tests;
 
-[Collection("Collection")]
-public class EinNormalizerTests : FixturedUnitTest
+[ClassDataSource<Host>(Shared = SharedType.PerTestSession)]
+public class EinNormalizerTests : HostedUnitTest
 {
     private readonly IEinNormalizer _normalizer;
 
-    public EinNormalizerTests(Fixture fixture, ITestOutputHelper output) : base(fixture, output)
+    public EinNormalizerTests(Host host) : base(host)
     {
         _normalizer = Resolve<IEinNormalizer>(true);
     }
 
-    [Fact]
+    [Test]
     public void Default()
     {
 
