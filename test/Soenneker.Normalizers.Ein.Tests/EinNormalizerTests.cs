@@ -20,31 +20,32 @@ public class EinNormalizerTests : HostedUnitTest
 
     }
 
-    [Theory]
-    [InlineData("123456789", "12-3456789")]
-    [InlineData("12-3456789", "12-3456789")]
-    [InlineData("12 345 6789", "12-3456789")]
-    [InlineData("  12.345.6789  ", "12-3456789")]
-    [InlineData("12/345\\6789", "12-3456789")]
-    [InlineData("abc12-3456789xyz", "12-3456789")]
+    [Test]
+    [Arguments("123456789", "12-3456789")]
+    [Arguments("12-3456789", "12-3456789")]
+    [Arguments("12 345 6789", "12-3456789")]
+    [Arguments("  12.345.6789  ", "12-3456789")]
+    [Arguments("12/345\\6789", "12-3456789")]
+    [Arguments("abc12-3456789xyz", "12-3456789")]
     public void Should_normalize_valid_EIN_formats(string input, string expected)
     {
         string? result = _normalizer.Normalize(input);
         result.Should().Be(expected);
     }
 
-    [Theory]
-    [InlineData(null)]
-    [InlineData("")]
-    [InlineData("   ")]
-    [InlineData("12345678")] // too short
-    [InlineData("1234567890")] // too long
-    [InlineData("abc")] // not enough digits
-    [InlineData("12-34-567")] // not enough digits
-    [InlineData("!@#$%^&*()")] // no digits
+    [Test]
+    [Arguments(null)]
+    [Arguments("")]
+    [Arguments("   ")]
+    [Arguments("12345678")] // too short
+    [Arguments("1234567890")] // too long
+    [Arguments("abc")] // not enough digits
+    [Arguments("12-34-567")] // not enough digits
+    [Arguments("!@#$%^&*()")] // no digits
     public void Should_return_null_for_invalid_EIN(string? input)
     {
         string? result = _normalizer.Normalize(input);
         result.Should().BeNull();
     }
 }
+
