@@ -7,7 +7,6 @@ using System.Runtime.CompilerServices;
 
 namespace Soenneker.Normalizers.Ein;
 
-/// <inheritdoc cref="IEinNormalizer"/>
 public sealed class EinNormalizer : BaseNormalizer<string?, string?>, IEinNormalizer
 {
     public EinNormalizer(ILogger<EinNormalizer> logger) : base(logger)

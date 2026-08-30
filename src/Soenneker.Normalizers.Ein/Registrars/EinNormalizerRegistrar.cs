@@ -5,7 +5,7 @@ using Soenneker.Normalizers.Ein.Abstract;
 namespace Soenneker.Normalizers.Ein.Registrars;
 
 /// <summary>
-/// A fast and allocation-efficient normalizer that converts raw input into a valid EIN format (XX-XXXXXXX), validating exactly 9 digits and ignoring non-numeric characters.
+/// Registers the EIN normalizer.
 /// </summary>
 public static class EinNormalizerRegistrar
 {

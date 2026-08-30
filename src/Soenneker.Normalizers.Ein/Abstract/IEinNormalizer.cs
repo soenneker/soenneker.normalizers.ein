@@ -3,7 +3,7 @@
 namespace Soenneker.Normalizers.Ein.Abstract;
 
 /// <summary>
-/// A fast and allocation-efficient normalizer that converts raw input into a valid EIN format (XX-XXXXXXX), validating exactly 9 digits and ignoring non-numeric characters.
+/// Normalizes input containing exactly nine ASCII digits to the canonical EIN display format <c>XX-XXXXXXX</c>.
 /// </summary>
 public interface IEinNormalizer : IBaseNormalizer<string?, string?>
 {
