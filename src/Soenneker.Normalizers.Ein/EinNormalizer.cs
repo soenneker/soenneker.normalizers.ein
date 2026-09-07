@@ -40,6 +40,9 @@ public sealed class EinNormalizer : BaseNormalizer<string?, string?>, IEinNormal
             return null;
 
         // One allocation: "12-3456789"
+        if (input.Length == 10 && input[2] == '-')
+            return input;
+
         return string.Create(10, digits, static (dst, d) =>
         {
             dst[0] = d[0];
